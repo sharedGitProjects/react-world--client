@@ -1,0 +1,30 @@
+﻿.world {
+}
+.world .command {
+  color: blue;
+  cursor: pointer;
+  padding: 3px;
+  display: block;
+}
+.world .command:hover {
+  text-decoration: underline;
+}
+.world .map {
+  width: 400px;
+  height: 400px;
+  background-color: gray;
+
+  display: grid;
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: repeat(10, 10%);
+}
+.world .inhabitant1 {
+  background-color: greenyellow;
+  grid-column: 1;
+  grid-row: 1;
+}
+.world .inhabitant2 {
+  background-color: orange;
+  grid-column: 2;
+  grid-row: 2;
+}
