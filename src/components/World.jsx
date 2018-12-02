@@ -14,17 +14,11 @@ export default class World extends React.PureComponent {
           const { items } = map;
 
           for (let i = 0; i < items.length; i++) {
-            if (items[i].cell.x === x && items[i].cell.y === y) {
+            if (items[i].x === x && items[i].y === y) {
               mapItems.push(items[i]);
               isExist = true;
-              break;
             }
           }
-        }
-
-        if (!isExist) {
-          const empty = { cell: { x, y }, type: "location" };
-          mapItems.push(empty);
         }
       }
     }
@@ -44,9 +38,9 @@ export default class World extends React.PureComponent {
 
       return (
         <div className="map">
-          {items.map((item) => {
-            if (item.type === "inhabitant") {
-              return <InhabitantContainer {...item} />;
+          {items.map(item => {
+            if (item.type === "inhabitant" || item.type === "location") {
+              return <InhabitantContainer key={item.id} {...item} />;
             }
 
             return "";

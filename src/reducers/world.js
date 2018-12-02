@@ -1,12 +1,12 @@
 ﻿import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
+  GET_WORLD_REQUEST,
+  GET_WORLD_SUCCESS,
+  GET_WORLD_FAIL,
   CREATE_WORLD_SUCCESS,
   CREATE_WORLD_FAIL,
   EVENT_SUCCESS,
   UPDATE_WORLD,
-} from "../consts/const";
+} from "../consts/actions";
 
 const initialState = {
   name: "",
@@ -18,12 +18,28 @@ const initialState = {
 
 export default function worldReducer(state = initialState, action) {
   switch (action.type) {
-  case LOGIN_REQUEST:
+  case GET_WORLD_REQUEST:
     return { ...state, isFetching: true, error: "" };
 
   case UPDATE_WORLD:
+    return {
+      ...state,
+      isFetching: false,
+      name: action.payload.name,
+      map: action.payload.newMap,
+      events: action.payload.events,
+    };
+
   case CREATE_WORLD_SUCCESS:
-  case LOGIN_SUCCESS:
+    return {
+      ...state,
+      isFetching: false,
+      name: action.payload.user,
+      map: action.payload.map,
+      events: action.payload.events,
+    };
+
+  case GET_WORLD_SUCCESS:
     return {
       ...state,
       isFetching: false,
@@ -36,7 +52,9 @@ export default function worldReducer(state = initialState, action) {
     return { ...state, isFetching: false, event: action.payload };
 
   case CREATE_WORLD_FAIL:
-  case LOGIN_FAIL:
+    return { ...state, isFetching: false, error: action.payload.message };
+
+  case GET_WORLD_FAIL:
     return { ...state, isFetching: false, error: action.payload.message };
 
   default:

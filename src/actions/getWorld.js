@@ -1,12 +1,11 @@
-import {
- SERVER_URL, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL 
-} from "../consts/const";
+import { GET_WORLD_REQUEST, GET_WORLD_SUCCESS, GET_WORLD_FAIL } from "../consts/actions";
+import getWorldWebRequest from "../webRequests/getWorld";
 
 export default function getWorld(worldName) {
-  return function (dispatch) {
+  return function(dispatch) {
     if (!worldName) {
       dispatch({
-        type: LOGIN_FAIL,
+        type: GET_WORLD_FAIL,
         payload: "worldName is empty",
       });
 
@@ -14,31 +13,30 @@ export default function getWorld(worldName) {
     }
 
     dispatch({
-      type: LOGIN_REQUEST,
+      type: GET_WORLD_REQUEST,
     });
 
-    const url = `${SERVER_URL}/world?name=${worldName}`;
-    fetch(url)
-      .then((response) => {
+    getWorldWebRequest(worldName)
+      .then(response => {
         if (!response.ok) {
           throw Error(response.statusText);
         }
 
         return response.json();
       })
-      .then((data) => {
+      .then(data => {
         console.log(data);
 
         dispatch({
-          type: LOGIN_SUCCESS,
+          type: GET_WORLD_SUCCESS,
           payload: data,
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log("Request failed", error);
 
         dispatch({
-          type: LOGIN_FAIL,
+          type: GET_WORLD_FAIL,
           payload: error,
         });
       });

@@ -12,7 +12,6 @@ class WorldProfileContainer extends React.PureComponent {
 }
 
 const mapStateToProps = store => ({
-  user: store.user,
   world: store.world,
 });
 
@@ -24,5 +23,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(WorldProfileContainer);

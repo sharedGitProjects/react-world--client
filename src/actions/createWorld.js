@@ -1,7 +1,8 @@
-import { SERVER_URL, CREATE_WORLD_SUCCESS, CREATE_WORLD_FAIL } from "../consts/const";
+import { CREATE_WORLD_SUCCESS, CREATE_WORLD_FAIL } from "../consts/actions";
+import createWorldWebRequest from "../webRequests/createWorld";
 
 export default function createWorld(worldName, worldMap, worldEvents, isSendEvent) {
-  return function (dispatch) {
+  return function(dispatch) {
     if (!worldName) {
       dispatch({
         type: CREATE_WORLD_FAIL,
@@ -11,21 +12,9 @@ export default function createWorld(worldName, worldMap, worldEvents, isSendEven
       return;
     }
 
-    const name = worldName;
-    const url = `${SERVER_URL}/world`;
-    fetch(url, {
-      method: "post",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify({
-        user: name,
-        map: worldMap,
-        events: worldEvents,
-      }),
-    })
+    createWorldWebRequest(worldName, worldMap, worldEvents)
       .then(response => response.json())
-      .then((data) => {
+      .then(data => {
         console.log(data);
 
         if (isSendEvent) {
@@ -35,7 +24,7 @@ export default function createWorld(worldName, worldMap, worldEvents, isSendEven
           });
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.log("Request failed", error);
 
         dispatch({

@@ -20,14 +20,116 @@ export default class WorldProfile extends React.PureComponent {
       },
       items: [
         {
-          cell: { x: 2, y: 3 },
-          type: "inhabitant",
-          typeName: "Inhabitant1",
+          x: 1,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_01",
         },
         {
-          cell: { x: 7, y: 5 },
+          x: 2,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_02",
+        },
+        {
+          x: 3,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_03",
+        },
+        {
+          x: 4,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_04",
+        },
+        {
+          x: 5,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_05",
+        },
+        {
+          x: 6,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_06",
+        },
+        {
+          x: 7,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_07",
+        },
+        {
+          x: 8,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_08",
+        },
+        {
+          x: 9,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_09",
+        },
+        {
+          x: 10,
+          y: 5,
+          type: "location",
+          typeName: "River",
+          id: "River_10",
+        },
+        {
+          x: 2,
+          y: 5,
+          type: "location",
+          typeName: "Raft",
+          id: "Raft_01",
+        },
+        {
+          x: 3,
+          y: 5,
+          type: "location",
+          typeName: "Raft",
+          id: "Raft_02",
+        },
+        {
+          x: 6,
+          y: 5,
+          type: "location",
+          typeName: "Raft",
+          id: "Raft_03",
+        },
+        {
+          x: 7,
+          y: 5,
+          type: "location",
+          typeName: "Raft",
+          id: "Raft_04",
+        },
+        {
+          x: 3,
+          y: 2,
           type: "inhabitant",
-          typeName: "Inhabitant2",
+          typeName: "Fox",
+          id: "Fox_01",
+        },
+        {
+          x: 7,
+          y: 8,
+          type: "inhabitant",
+          typeName: "Kolobok",
+          id: "Kolobok_01",
         },
       ],
     };
@@ -37,8 +139,7 @@ export default class WorldProfile extends React.PureComponent {
   }
 
   onSaveWorldClick = () => {
-    const { map } = this.props.world;
-    const { name } = this.props.user;
+    const { map, name } = this.props.world;
 
     if (map && name) {
       const events = [{ 1: 1 }, { 1: 2 }];
@@ -47,8 +148,7 @@ export default class WorldProfile extends React.PureComponent {
   }
 
   onUpdateWorldClick = () => {
-    const { map } = this.props.world;
-    const { name } = this.props.user;
+    const { map, name } = this.props.world;
 
     if (map && name) {
       const events = [{ 1: 1 }, { 1: 2 }];
@@ -56,14 +156,13 @@ export default class WorldProfile extends React.PureComponent {
     }
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { id } = e.currentTarget;
     this.setState({ [id]: e.currentTarget.value });
   }
 
   renderTemplate = () => {
-    const { name, error, isFetching } = this.props.user;
-    const { map } = this.props.world;
+    const { name, error, isFetching, map } = this.props.world;
 
     if (error) {
       return <p>Ошибка выполнения запроса</p>;
@@ -73,21 +172,11 @@ export default class WorldProfile extends React.PureComponent {
       return <div>Loading...</div>;
     }
 
-    if (name) {
-      const mapJson = JSON.stringify(map);
-      return (
-        <div>
-          <div>{mapJson}</div>
-        </div>
-      );
-    }
-
     return (
       <div>
         <div className="command" onClick={this.onCreateWorldClick}>
-
           createWorld
-</div>
+        </div>
       </div>
     );
   }
@@ -103,17 +192,14 @@ export default class WorldProfile extends React.PureComponent {
         </div>
         <div>{this.renderTemplate()}</div>
         <div className="command" onClick={this.onGetWorldClick}>
-
           getWorld
-</div>
+        </div>
         <div className="command" onClick={this.onSaveWorldClick}>
-
           saveWorld
-</div>
+        </div>
         <div className="command" onClick={this.onUpdateWorldClick}>
-
           updateWorld
-</div>
+        </div>
       </div>
     );
   }

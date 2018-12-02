@@ -1,18 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Inhabitant1 from "./inhabitants/Inhabitant1";
-import Inhabitant2 from "./inhabitants/Inhabitant2";
+import Fox from "./inhabitants/Fox";
+import Kolobok from "./inhabitants/Kolobok";
+import Raft from "./locations/Raft";
+import River from "./locations/River";
 
 export default class Inhabitant extends React.PureComponent {
   renderTemplate = () => {
     const { typeName } = this.props;
 
     switch (typeName) {
-    case "Inhabitant1": {
-      return <Inhabitant1 {...this.props} />;
+    case "Fox": {
+      return <Fox {...this.props} />;
     }
-    case "Inhabitant2": {
-      return <Inhabitant2 {...this.props} />;
+    case "Kolobok": {
+      return <Kolobok {...this.props} />;
+    }
+    case "Raft": {
+      return <Raft {...this.props} />;
+    }
+    case "River": {
+      return <River {...this.props} />;
     }
     default: {
       return "";
@@ -27,5 +35,6 @@ export default class Inhabitant extends React.PureComponent {
 
 Inhabitant.propTypes = {
   typeName: PropTypes.string,
-  cell: PropTypes.object,
+  x: PropTypes.number,
+  y: PropTypes.number,
 };

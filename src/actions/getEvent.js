@@ -1,21 +1,14 @@
-import { EVENT_REQUEST, EVENT_SUCCESS, EVENT_FAIL } from "../consts/const";
+import { EVENT_REQUEST, EVENT_SUCCESS, EVENT_FAIL } from "../consts/actions";
+import getEventWebRequest from "../webRequests/getEvent";
 
-export default function getEvent(url, event, dispatch) {
+export default function getEvent(event, dispatch) {
   dispatch({
     type: EVENT_REQUEST,
   });
 
-  fetch(url, {
-    method: "post",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-    body: JSON.stringify({
-      eventName: event,
-    }),
-  })
+  getEventWebRequest(event)
     .then(response => response.json())
-    .then((data) => {
+    .then(data => {
       console.log(data);
 
       dispatch({
@@ -23,7 +16,7 @@ export default function getEvent(url, event, dispatch) {
         payload: data,
       });
     })
-    .catch((error) => {
+    .catch(error => {
       console.log("Request failed", error);
 
       dispatch({

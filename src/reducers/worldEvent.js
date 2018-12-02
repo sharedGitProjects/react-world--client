@@ -1,4 +1,4 @@
-﻿import { EVENT_REQUEST, EVENT_SUCCESS, EVENT_FAIL } from "../consts/const";
+﻿import { EVENT_REQUEST, EVENT_SUCCESS, EVENT_FAIL } from "../consts/actions";
 
 const initialState = {
   event: "",
