@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import InhabitantContainer from "./InhabitantContainer";
+import Inhabitant from "../inhabitant/Inhabitant";
 
 export default class World extends React.PureComponent {
   static getItems(map) {
@@ -36,7 +36,7 @@ export default class World extends React.PureComponent {
         <div className="map">
           {items.map(item => {
             if (item.type === "inhabitant" || item.type === "location") {
-              return <InhabitantContainer key={item.id} {...item} />;
+              return <Inhabitant key={item.id} {...item} />;
             }
 
             return "";

@@ -1,14 +1,7 @@
-import React from "react";
 import { connect } from "react-redux";
 import World from "./World";
-import getTemperature from "../actions/getTemperature";
-import getTimeOfday from "../actions/getTimeOfday";
-
-class WorldContainer extends React.PureComponent {
-  render() {
-    return <World {...this.props} />;
-  }
-}
+import getTemperature from "../../actions/getTemperature";
+import getTimeOfday from "../../actions/getTimeOfday";
 
 const mapStateToProps = store => ({
   world: store.world,
@@ -21,5 +14,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(WorldContainer);
+  mapDispatchToProps
+)(World);

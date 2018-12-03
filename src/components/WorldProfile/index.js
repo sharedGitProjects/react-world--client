@@ -1,15 +1,8 @@
-import React from "react";
 import { connect } from "react-redux";
 import WorldProfile from "./WorldProfile";
-import getWorld from "../actions/getWorld";
-import createWorld from "../actions/createWorld";
-import updateWorld from "../actions/updateWorld";
-
-class WorldProfileContainer extends React.PureComponent {
-  render() {
-    return <WorldProfile {...this.props} />;
-  }
-}
+import getWorld from "../../actions/getWorld";
+import createWorld from "../../actions/createWorld";
+import updateWorld from "../../actions/updateWorld";
 
 const mapStateToProps = store => ({
   world: store.world,
@@ -24,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(WorldProfileContainer);
+)(WorldProfile);
