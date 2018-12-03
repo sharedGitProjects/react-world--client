@@ -90,28 +90,28 @@ export default class WorldProfile extends React.PureComponent {
           id: "River_10",
         },
         {
-          x: 2,
+          x: 3,
           y: 5,
           type: "location",
           typeName: "Raft",
           id: "Raft_01",
         },
         {
-          x: 3,
+          x: 4,
           y: 5,
           type: "location",
           typeName: "Raft",
           id: "Raft_02",
         },
         {
-          x: 6,
+          x: 7,
           y: 5,
           type: "location",
           typeName: "Raft",
           id: "Raft_03",
         },
         {
-          x: 7,
+          x: 8,
           y: 5,
           type: "location",
           typeName: "Raft",
@@ -156,13 +156,33 @@ export default class WorldProfile extends React.PureComponent {
     }
   }
 
+  onStopUpdateClick = () => {
+    if (this.worldTick) {
+      clearInterval(this.worldTick);
+      this.worldTick = null;
+    }
+  }
+
   handleChange = e => {
     const { id } = e.currentTarget;
     this.setState({ [id]: e.currentTarget.value });
   }
 
+  componentDidMount() {
+    this.worldTick = setInterval(() => {
+      this.onUpdateWorldClick();
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    if (this.worldTick) {
+      clearInterval(this.worldTick);
+      this.worldTick = null;
+    }
+  }
+
   renderTemplate = () => {
-    const { name, error, isFetching, map } = this.props.world;
+    const { error, isFetching } = this.props.world;
 
     if (error) {
       return <p>Ошибка выполнения запроса</p>;
@@ -199,6 +219,9 @@ export default class WorldProfile extends React.PureComponent {
         </div>
         <div className="command" onClick={this.onUpdateWorldClick}>
           updateWorld
+        </div>
+        <div className="command" onClick={this.onStopUpdateClick}>
+          stopUpdate
         </div>
       </div>
     );

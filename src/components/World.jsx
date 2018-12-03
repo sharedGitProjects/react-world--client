@@ -8,15 +8,11 @@ export default class World extends React.PureComponent {
 
     for (let y = 1; y < map.size.height + 1; y++) {
       for (let x = 1; x < map.size.width + 1; x++) {
-        let isExist = false;
-
         if (map.items && map.items.length) {
           const { items } = map;
-
           for (let i = 0; i < items.length; i++) {
             if (items[i].x === x && items[i].y === y) {
               mapItems.push(items[i]);
-              isExist = true;
             }
           }
         }
