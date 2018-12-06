@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
+import buildWorldData from "../../utils/buildWorldData";
 
 export default class WorldProfile extends React.PureComponent {
   state = {
@@ -13,128 +14,8 @@ export default class WorldProfile extends React.PureComponent {
 
   onCreateWorldClick = () => {
     const worldNameInput = document.getElementById("worldNameid");
-    const map = {
-      size: {
-        width: 10,
-        height: 10,
-      },
-      items: [
-        {
-          x: 1,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_01",
-        },
-        {
-          x: 2,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_02",
-        },
-        {
-          x: 3,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_03",
-        },
-        {
-          x: 4,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_04",
-        },
-        {
-          x: 5,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_05",
-        },
-        {
-          x: 6,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_06",
-        },
-        {
-          x: 7,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_07",
-        },
-        {
-          x: 8,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_08",
-        },
-        {
-          x: 9,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_09",
-        },
-        {
-          x: 10,
-          y: 5,
-          type: "location",
-          typeName: "River",
-          id: "River_10",
-        },
-        {
-          x: 3,
-          y: 5,
-          type: "location",
-          typeName: "Raft",
-          id: "Raft_01",
-        },
-        {
-          x: 4,
-          y: 5,
-          type: "location",
-          typeName: "Raft",
-          id: "Raft_02",
-        },
-        {
-          x: 7,
-          y: 5,
-          type: "location",
-          typeName: "Raft",
-          id: "Raft_03",
-        },
-        {
-          x: 8,
-          y: 5,
-          type: "location",
-          typeName: "Raft",
-          id: "Raft_04",
-        },
-        {
-          x: 3,
-          y: 2,
-          type: "inhabitant",
-          typeName: "Fox",
-          id: "Fox_01",
-        },
-        {
-          x: 7,
-          y: 8,
-          type: "inhabitant",
-          typeName: "Kolobok",
-          id: "Kolobok_01",
-        },
-      ],
-    };
-
-    const events = [{ 1: 1 }, { 1: 2 }];
+    const map = buildWorldData();
+    const events = [];
     this.props.createWorld(worldNameInput.value, map, events, true);
   }
 
@@ -142,7 +23,7 @@ export default class WorldProfile extends React.PureComponent {
     const { map, name } = this.props.world;
 
     if (map && name) {
-      const events = [{ 1: 1 }, { 1: 2 }];
+      const events = [];
       this.props.createWorld(name, map, events);
     }
   }
@@ -151,7 +32,7 @@ export default class WorldProfile extends React.PureComponent {
     const { map, name } = this.props.world;
 
     if (map && name) {
-      const events = [{ 1: 1 }, { 1: 2 }];
+      const events = [];
       this.props.updateWorld({ ...this.props, map, events });
     }
   }

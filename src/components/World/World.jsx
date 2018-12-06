@@ -1,25 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Inhabitant from "../inhabitant/Inhabitant";
+import Cell from "../cell/Cell";
 
 export default class World extends React.PureComponent {
-  static getItems(map) {
-    const mapItems = [];
+  static getCells(map) {
+    const mapCells = [];
 
-    for (let y = 1; y < map.size.height + 1; y++) {
-      for (let x = 1; x < map.size.width + 1; x++) {
-        if (map.items && map.items.length) {
-          const { items } = map;
-          for (let i = 0; i < items.length; i++) {
-            if (items[i].x === x && items[i].y === y) {
-              mapItems.push(items[i]);
+    if (map.cells && map.cells.length) {
+      for (let y = 0; y < map.size.maxY; y++) {
+        for (let x = 0; x < map.size.maxX; x++) {
+          const yxCells = map.cells[y][x];
+          if (yxCells && yxCells.length) {
+            for (let z = 0; z < yxCells.length; z++) {
+              mapCells.push(yxCells[z]);
             }
           }
         }
       }
     }
 
-    return mapItems;
+    return mapCells;
   }
 
   renderTemplate = () => {
@@ -30,16 +30,12 @@ export default class World extends React.PureComponent {
     }
 
     if (map && map.size) {
-      const items = World.getItems(map);
+      const cells = World.getCells(map);
 
       return (
         <div className="map">
-          {items.map(item => {
-            if (item.type === "inhabitant" || item.type === "location") {
-              return <Inhabitant key={item.id} {...item} />;
-            }
-
-            return "";
+          {cells.map(cell => {
+            return <Cell key={cell.id} {...cell} />;
           })}
         </div>
       );

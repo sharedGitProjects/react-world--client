@@ -1,10 +1,10 @@
 import React from "react";
 
-export default class Raft extends React.PureComponent {
+export default class River extends React.PureComponent {
   renderTemplate = () => {
     const { x, y } = this.props;
 
-    return <div className="raft" style={{ gridColumn: x, gridRow: y }} />;
+    return <div className="river" style={{ gridColumn: x + 1, gridRow: y + 1 }} />;
   }
 
   render() {
