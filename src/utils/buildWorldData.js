@@ -15,8 +15,12 @@ export default function buildWorldData() {
   const dataCells = [
     buildCellRiverData(0, 4),
     buildCellRiverData(1, 4),
+    buildCellRiverData(2, 4),
+    buildCellRiverData(3, 4),
     buildCellRiverData(4, 4),
     buildCellRiverData(5, 4),
+    buildCellRiverData(6, 4),
+    buildCellRiverData(7, 4),
     buildCellRiverData(8, 4),
     buildCellRiverData(9, 4),
 

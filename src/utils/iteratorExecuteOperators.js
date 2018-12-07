@@ -9,8 +9,9 @@ export default function iteratorExecuteOperators(map) {
           if (cell.operators && cell.operators.length) {
             cell.operators.forEach(operatorName => {
               if (cell.executedOperators.indexOf(operatorName) < 0) {
-                operatorStore[operatorName](cell, map);
-                cell.executedOperators.push(operatorName);
+                if (operatorStore[operatorName](cell, map)) {
+                  cell.executedOperators.push(operatorName);
+                }
               }
             });
           }

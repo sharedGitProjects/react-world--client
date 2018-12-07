@@ -40,9 +40,12 @@ export default function operatorGo(cell, map) {
     } else {
       let result = true;
       nextYXCells.forEach(zCell => {
+        if (zCell.allowGo) {
+          result = true;
+          return;
+        }
         if (zCell.bannedOperators.indexOf(OPERATOR_GO) > -1) {
           result = false;
-          return;
         }
       });
 
@@ -67,5 +70,8 @@ export default function operatorGo(cell, map) {
   const { nextX, nextY } = getNextXY(cell.x, cell.y);
   if (validateXY(nextX, nextY)) {
     moveCell(nextX, nextY);
+    return true;
   }
+
+  return false;
 }
