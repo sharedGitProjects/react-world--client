@@ -1,9 +1,0 @@
-﻿.world .command {
-  color: rgb(20, 100, 180);
-  cursor: pointer;
-  padding: 3px;
-  display: block;
-}
-.world .command:hover {
-  text-decoration: underline;
-}

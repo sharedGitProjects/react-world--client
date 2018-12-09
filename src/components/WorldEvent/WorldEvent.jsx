@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import "./style.css";
+import Command from "../command/Command";
 
 export default class WorldEvent extends React.PureComponent {
   renderTemplate = () => {
@@ -35,12 +35,8 @@ export default class WorldEvent extends React.PureComponent {
   render() {
     return (
       <div>
-        <div className="command" onClick={this.props.getTemperature}>
-          getTemperature
-        </div>
-        <div className="command" onClick={this.props.getTimeOfday}>
-          getTimeOfday
-        </div>
+        <Command operation={this.props.getTemperature} title="Температура" />
+        <Command operation={this.props.getTimeOfday} title="Время суток" />
         <div>{this.renderTemplate()}</div>
       </div>
     );
