@@ -30,6 +30,11 @@ export default function buildWorldData() {
     buildCellRaftData(7, 4),
 
     buildCellFoxData(2, 1),
+    buildCellFoxData(6, 6),
+    buildCellFoxData(7, 7),
+
+    buildCellKolobokData(2, 2),
+    buildCellKolobokData(3, 7),
     buildCellKolobokData(6, 7),
   ];
 

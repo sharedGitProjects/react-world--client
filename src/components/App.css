@@ -18,23 +18,26 @@
 }
 .world .river {
   grid-column: 1;
-  grid-row: 5;
+  grid-row: 1;
   background-color: rgb(52, 208, 247);
 }
 .world .raft {
-  grid-column: 1;
-  grid-row: 5;
-  background-image: url("/images/sprites60.png");
-  background-position-x:  0;
-  background-position-y: -60px;
+  grid-column: 2;
+  grid-row: 1;
+  background: url("/images/sprites60.png") 0 -60px;
+}
+.world .skull {
+  grid-column: 3;
+  grid-row: 1;
+  background: url("/images/sprites60.png") 0 -180px;
 }
 .world .kolobok {
-  grid-column: 2;
-  grid-row: 2;
+  grid-column: 1;
+  grid-row: 6;
   background: url("/images/sprites60.png") 0 -120px;
 }
 .world .fox {
-  grid-column: 1;
-  grid-row: 1;
+  grid-column: 2;
+  grid-row: 6;
   background: url("/images/sprites60.png") 0 0;
 }

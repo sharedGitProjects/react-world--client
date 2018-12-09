@@ -4,9 +4,7 @@ import iteratorExecuteOperators from "../utils/iteratorExecuteOperators";
 
 export default function updateWorld(data) {
   return function(dispatch) {
-    const { map } = { ...data.world };
-
-    const newMap = copyMap(map);
+    const newMap = copyMap(data.world.map);
     iteratorExecuteOperators(newMap);
 
     dispatch({

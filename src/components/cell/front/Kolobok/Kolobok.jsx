@@ -2,9 +2,10 @@ import React from "react";
 
 export default class Kolobok extends React.PureComponent {
   renderTemplate = () => {
-    const { x, y } = this.props;
+    const { x, y, isDead } = this.props;
 
-    return <div className="kolobok" style={{ gridColumn: x + 1, gridRow: y + 1 }} />;
+    const className = isDead ? "skull" : "kolobok";
+    return <div className={className} style={{ gridColumn: x + 1, gridRow: y + 1 }} />;
   }
 
   render() {

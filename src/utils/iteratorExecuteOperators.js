@@ -1,22 +1,21 @@
-import { operatorStore } from "./operatorStore";
+import getOperator from "./getOperator";
 
-export default function iteratorExecuteOperators(map) {
-  const { cells } = { ...map };
-  cells.forEach(yCells => {
-    yCells.forEach(yxCells => {
-      if (yxCells && yxCells.length) {
-        yxCells.forEach(cell => {
-          if (cell.operators && cell.operators.length) {
-            cell.operators.forEach(operatorName => {
-              if (cell.executedOperators.indexOf(operatorName) < 0) {
-                if (operatorStore[operatorName](cell, map)) {
-                  cell.executedOperators.push(operatorName);
-                }
-              }
-            });
+export default function executedOperators(map) {
+  let changed = false;
+  map.cells.forEach(yCells =>
+    yCells.forEach(yxCells =>
+      yxCells.forEach(cell =>
+        cell.operators.forEach(operatorName => {
+          if (!cell.executedOperators.includes(operatorName) && getOperator(operatorName)(cell, map)) {
+            cell.executedOperators.push(operatorName);
+            changed = true;
           }
-        });
-      }
-    });
-  });
+        })
+      )
+    )
+  );
+
+  if (changed) {
+    executedOperators(map);
+  }
 }

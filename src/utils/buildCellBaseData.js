@@ -6,7 +6,6 @@ export default function buildCellBaseData(x, y, cellType, cellGroup) {
     typeName: cellType,
     id: `${cellType}_${x}_${y}`,
     operators: [],
-    bannedOperators: [],
     executedOperators: [],
   };
 }

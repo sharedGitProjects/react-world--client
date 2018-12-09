@@ -5,7 +5,7 @@ import Kolobok from "./front/Kolobok/Kolobok";
 import Raft from "./back/Raft/Raft";
 import River from "./back/River/River";
 
-export default class Cell extends React.PureComponent {
+export default class Cell extends React.Component {
   cellTypes = {
     Fox: Fox,
     Kolobok: Kolobok,
@@ -22,6 +22,14 @@ export default class Cell extends React.PureComponent {
     }
 
     return "";
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.x !== this.props.x || nextProps.y !== this.props.y || nextProps.isDead !== this.props.isDead) {
+      return true;
+    }
+
+    return false;
   }
 
   render() {

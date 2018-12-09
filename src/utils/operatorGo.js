@@ -1,4 +1,4 @@
-import { OPERATOR_GO } from "./operatorStore";
+export const OPERATOR_GO = "operatorGo";
 
 export default function operatorGo(cell, map) {
   const { cells } = { ...map };
@@ -44,7 +44,7 @@ export default function operatorGo(cell, map) {
           result = true;
           return;
         }
-        if (zCell.bannedOperators.indexOf(OPERATOR_GO) > -1) {
+        if (zCell.offGo) {
           result = false;
         }
       });
@@ -65,6 +65,10 @@ export default function operatorGo(cell, map) {
 
     yxCells.splice(z, 1);
     cells[cell.y][cell.x].push(cell);
+  }
+
+  if (cell.isDead) {
+    return false;
   }
 
   const { nextX, nextY } = getNextXY(cell.x, cell.y);

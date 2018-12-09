@@ -1,6 +1,6 @@
 import { CELL_FOX, CELL_GROUP_FRONT } from "../consts/const";
 import buildCellBaseData from "./buildCellBaseData";
-import { OPERATOR_GO } from "./operatorStore";
+import { OPERATOR_GO } from "./operatorGo";
 
 export default function buildCellFoxData(x, y) {
   const cell = buildCellBaseData(x, y, CELL_FOX, CELL_GROUP_FRONT);
