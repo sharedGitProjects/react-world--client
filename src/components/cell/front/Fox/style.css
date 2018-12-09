@@ -1,0 +1,8 @@
+﻿.world .fox {
+  background: url("/images/sprites60.png") 0 0;
+}
+.world .skull {
+  grid-column: 3;
+  grid-row: 1;
+  background: url("/images/sprites60.png") 0 -180px;
+}

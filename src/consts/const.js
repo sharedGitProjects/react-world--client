@@ -5,6 +5,8 @@ export const CELL_RIVER = "River";
 
 export const CELL_FOX = "Fox";
 export const CELL_KOLOBOK = "Kolobok";
+export const CELL_GRANDMA = "Grandma";
+export const CELL_GRANDPA = "Grandpa";
 
 export const CELL_GROUP_BACK = "location";
 export const CELL_GROUP_FRONT = "inhabitant";

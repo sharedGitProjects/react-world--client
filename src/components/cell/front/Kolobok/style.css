@@ -1,0 +1,10 @@
+﻿.world .kolobok {
+  grid-column: 1;
+  grid-row: 6;
+  background: url("/images/sprites60.png") 0 -120px;
+}
+.world .skull {
+  grid-column: 3;
+  grid-row: 1;
+  background: url("/images/sprites60.png") 0 -180px;
+}

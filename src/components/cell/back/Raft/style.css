@@ -1,0 +1,5 @@
+﻿.world .raft {
+  grid-column: 2;
+  grid-row: 1;
+  background: url("/images/sprites60.png") 0 -60px;
+}

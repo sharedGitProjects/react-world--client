@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Cell from "../cell/Cell";
+import "./style.css";
 
 export default class World extends React.PureComponent {
   static getCells(map) {

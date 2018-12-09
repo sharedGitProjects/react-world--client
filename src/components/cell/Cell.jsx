@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Fox from "./front/Fox/Fox";
+import Grandma from "./front/Grandma/Grandma";
+import Grandpa from "./front/Grandpa/Grandpa";
 import Kolobok from "./front/Kolobok/Kolobok";
 import Raft from "./back/Raft/Raft";
 import River from "./back/River/River";
@@ -11,6 +13,8 @@ export default class Cell extends React.Component {
     Kolobok: Kolobok,
     Raft: Raft,
     River: River,
+    Grandma: Grandma,
+    Grandpa: Grandpa,
   }
 
   renderTemplate = () => {

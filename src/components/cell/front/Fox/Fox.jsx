@@ -1,10 +1,12 @@
 import React from "react";
+import "./style.css";
 
 export default class Fox extends React.PureComponent {
   renderTemplate = () => {
-    const { x, y } = this.props;
+    const { x, y, isDead } = this.props;
 
-    return <div className="fox" style={{ gridColumn: x + 1, gridRow: y + 1 }} />;
+    const className = isDead ? "skull" : "fox";
+    return <div className={className} style={{ gridColumn: x + 1, gridRow: y + 1 }} />;
   }
 
   render() {

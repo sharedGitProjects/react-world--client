@@ -1,4 +1,6 @@
 import buildCellFoxData from "./buildCellFoxData";
+import buildCellGrandmaData from "./buildCellGrandmaData";
+import buildCellGrandpaData from "./buildCellGrandpaData";
 import buildCellKolobokData from "./buildCellKolobokData";
 import buildCellRaftData from "./buildCellRaftData";
 import buildCellRiverData from "./buildCellRiverData";
@@ -29,13 +31,14 @@ export default function buildWorldData() {
     buildCellRaftData(6, 4),
     buildCellRaftData(7, 4),
 
-    buildCellFoxData(2, 1),
-    buildCellFoxData(6, 6),
-    buildCellFoxData(7, 7),
+    buildCellFoxData(3, 8),
+    buildCellFoxData(6, 8),
 
-    buildCellKolobokData(2, 2),
     buildCellKolobokData(3, 7),
     buildCellKolobokData(6, 7),
+
+    buildCellGrandmaData(4, 6),
+    buildCellGrandpaData(5, 6),
   ];
 
   function findCells(x, y, allCells) {
