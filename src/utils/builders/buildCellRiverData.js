@@ -1,4 +1,4 @@
-import { CELL_RIVER, CELL_GROUP_BACK } from "../consts/const";
+import { CELL_RIVER, CELL_GROUP_BACK } from "../../consts/const";
 import buildCellBaseData from "./buildCellBaseData";
 
 export default function buildCellRiverData(x, y) {

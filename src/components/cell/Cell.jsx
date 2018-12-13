@@ -45,4 +45,5 @@ Cell.propTypes = {
   typeName: PropTypes.string,
   x: PropTypes.number,
   y: PropTypes.number,
+  isDead: PropTypes.bool,
 };

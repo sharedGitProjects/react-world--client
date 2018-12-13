@@ -1,4 +1,4 @@
-import { CELL_GRANDMA } from "../consts/const";
+import { CELL_GRANDMA } from "../../consts/const";
 
 export const OPERATOR_REANIMATE_BY_GRANDMA = "operatorReanimateByGrandma";
 

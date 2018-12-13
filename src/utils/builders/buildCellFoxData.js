@@ -1,7 +1,7 @@
-import { CELL_FOX, CELL_GROUP_FRONT } from "../consts/const";
+import { CELL_FOX, CELL_GROUP_FRONT } from "../../consts/const";
 import buildCellBaseData from "./buildCellBaseData";
-import { OPERATOR_GO } from "./operatorGo";
-import { OPERATOR_DEATH_BY_GRANDPA } from "./operatorDeathByGrandpa";
+import { OPERATOR_GO } from "../operators/operatorGo";
+import { OPERATOR_DEATH_BY_GRANDPA } from "../operators/operatorDeathByGrandpa";
 
 export default function buildCellFoxData(x, y) {
   const cell = buildCellBaseData(x, y, CELL_FOX, CELL_GROUP_FRONT);

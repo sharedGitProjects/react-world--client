@@ -1,28 +1,27 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
-import buildWorldData from "../../utils/buildWorldData";
+import buildWorldData from "../../utils/builders/buildWorldData";
 import Command from "../command/Command";
 
 export default class Profile extends React.PureComponent {
-  state = {
-    worldNameid: "",
+  constructor(props) {
+    super(props);
+    this.state = { worldName: this.props.world.name };
   }
 
   onGetWorldClick = () => {
-    const worldNameInput = document.getElementById("worldNameid");
-    this.props.getWorld(worldNameInput.value);
+    this.props.getWorld(this.state.worldName);
   }
 
   onCreateWorldClick = () => {
-    const worldNameInput = document.getElementById("worldNameid");
     const map = buildWorldData();
     const events = [];
-    this.props.createWorld(worldNameInput.value, map, events, true);
+    this.props.createWorld(this.state.worldName, map, events, true);
   }
 
-  handleChange = e => {
-    const { id } = e.currentTarget;
-    this.setState({ [id]: e.currentTarget.value });
+  handleChange = event => {
+    const { value } = event.currentTarget;
+    this.setState({ worldName: value });
   }
 
   renderTemplate = () => {
@@ -40,14 +39,9 @@ export default class Profile extends React.PureComponent {
   }
 
   render() {
-    let { worldNameid } = this.state;
-    if (!worldNameid) {
-      worldNameid = this.props.world.name;
-    }
-
     return (
       <div>
-        <input id="worldNameid" type="text" onChange={this.handleChange} value={worldNameid} />
+        <input type="text" onChange={this.handleChange} value={this.state.value} />
         {this.renderTemplate()}
         <Command operation={this.onGetWorldClick} title="Загрузить мир" />
       </div>

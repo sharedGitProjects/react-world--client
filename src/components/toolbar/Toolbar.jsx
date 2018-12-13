@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import Command from "../command/Command";
 
 export default class Toolbar extends React.PureComponent {
-  state = {
-    worldNameid: "",
-  }
-
   onSaveWorldClick = () => {
     const { map, name } = this.props.world;
 

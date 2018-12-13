@@ -5,21 +5,7 @@ import "./style.css";
 
 export default class World extends React.PureComponent {
   static getCells(map) {
-    const mapCells = [];
-
-    if (map.cells && map.cells.length) {
-      for (let y = 0; y < map.size.maxY; y++) {
-        for (let x = 0; x < map.size.maxX; x++) {
-          const yxCells = map.cells[y][x];
-          if (yxCells && yxCells.length) {
-            for (let z = 0; z < yxCells.length; z++) {
-              mapCells.push(yxCells[z]);
-            }
-          }
-        }
-      }
-    }
-
+    const mapCells = map.cells.flat(3);
     return mapCells;
   }
 

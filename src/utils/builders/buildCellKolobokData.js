@@ -1,8 +1,8 @@
-import { CELL_KOLOBOK, CELL_GROUP_FRONT } from "../consts/const";
+import { CELL_KOLOBOK, CELL_GROUP_FRONT } from "../../consts/const";
 import buildCellBaseData from "./buildCellBaseData";
-import { OPERATOR_GO } from "./operatorGo";
-import { OPERATOR_DEATH_BY_FOX } from "./operatorDeathByFox";
-import { OPERATOR_REANIMATE_BY_GRANDMA } from "./operatorReanimateByGrandma";
+import { OPERATOR_GO } from "../operators/operatorGo";
+import { OPERATOR_DEATH_BY_FOX } from "../operators/operatorDeathByFox";
+import { OPERATOR_REANIMATE_BY_GRANDMA } from "../operators/operatorReanimateByGrandma";
 
 export default function buildCellKolobokData(x, y) {
   const cell = buildCellBaseData(x, y, CELL_KOLOBOK, CELL_GROUP_FRONT);
