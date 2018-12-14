@@ -37,7 +37,7 @@ export default function buildWorldData() {
     buildCellKolobokData(3, 7),
     buildCellKolobokData(6, 7),
 
-    buildCellGrandmaData(4, 6),
+    buildCellGrandmaData(4, 2),
     buildCellGrandpaData(5, 6),
   ];
 

@@ -6,7 +6,7 @@ import Command from "../command/Command";
 export default class Profile extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { worldName: this.props.world.name };
+    this.state = { worldName: props.world.name };
   }
 
   onGetWorldClick = () => {
@@ -41,7 +41,7 @@ export default class Profile extends React.PureComponent {
   render() {
     return (
       <div>
-        <input type="text" onChange={this.handleChange} value={this.state.value} />
+        <input type="text" onChange={this.handleChange} value={this.state.worldName} />
         {this.renderTemplate()}
         <Command operation={this.onGetWorldClick} title="Загрузить мир" />
       </div>

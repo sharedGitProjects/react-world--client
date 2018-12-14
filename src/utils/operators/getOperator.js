@@ -1,12 +1,14 @@
-import operatorGo from "./operatorGo";
 import operatorDeathByFox from "./operatorDeathByFox";
 import operatorDeathByGrandpa from "./operatorDeathByGrandpa";
+import operatorGo from "./operatorGo";
+import operatorGoToSkull from "./operatorGoToSkull";
 import operatorReanimateByGrandma from "./operatorReanimateByGrandma";
 
 const operatorStore = {
-  operatorGo: operatorGo,
   operatorDeathByFox: operatorDeathByFox,
   operatorDeathByGrandpa: operatorDeathByGrandpa,
+  operatorGo: operatorGo,
+  operatorGoToSkull: operatorGoToSkull,
   operatorReanimateByGrandma: operatorReanimateByGrandma,
 };
 
