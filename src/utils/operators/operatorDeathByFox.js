@@ -10,7 +10,7 @@ export default function operatorDeathByFox(cell, map) {
   let executed = false;
   const yxCells = map.cells[cell.y][cell.x];
   yxCells.forEach(yxCell => {
-    if (yxCell.typeName === CELL_FOX) {
+    if (yxCell.typeName === CELL_FOX && !yxCell.isDead) {
       cell.isDead = true;
       executed = true;
       return;

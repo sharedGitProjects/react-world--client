@@ -10,3 +10,6 @@ export const CELL_GRANDPA = "Grandpa";
 
 export const CELL_GROUP_BACK = "location";
 export const CELL_GROUP_FRONT = "inhabitant";
+
+export const WORLD_TIME_DAY = "day";
+export const WORLD_TIME_NIGHT = "night";

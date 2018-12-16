@@ -1,12 +1,10 @@
+import getRandomInt from "./getRandomInt";
+
 export const OPERATOR_GO = "operatorGo";
 
 export default function operatorGo(cell, map) {
   const { cells } = { ...map };
   const yxCells = cells[cell.y][cell.x];
-
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
 
   function getNextXY(x, y) {
     const randomX = getRandomInt(-1, 1);

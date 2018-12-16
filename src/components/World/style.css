@@ -7,3 +7,12 @@
   grid-template-columns: repeat(10, 10%);
   grid-template-rows: repeat(10, 10%);
 }
+.worldMap {
+  width: 600px;
+}
+.night {
+  background-color: rgb(39, 39, 68);
+}
+.night .map {
+  background-color: rgb(207, 240, 159, 0.8);
+}

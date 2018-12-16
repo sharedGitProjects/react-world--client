@@ -1,3 +1,5 @@
+import getRandomInt from "./getRandomInt";
+
 export const OPERATOR_GO_TO_SKULL = "operatorGoToSkull";
 
 export default function operatorGoToSkull(cell, map) {
@@ -14,7 +16,7 @@ export default function operatorGoToSkull(cell, map) {
   }
 
   function calcDistance(targetX, targetY) {
-    return Math.abs(targetY - cell.x) + Math.abs(targetX - cell.y);
+    return Math.abs(targetY - cell.y) + Math.abs(targetX - cell.x);
   }
 
   function selectTargetCell(targetCells) {
@@ -41,9 +43,13 @@ export default function operatorGoToSkull(cell, map) {
     return targetXY;
   }
 
-  function getNextXY(x, y, targetCell) {
+  function getNextXY(x, y, targetCell, vertical) {
     const nextXY = { x: x, y: y };
-    if (targetCell.x > x) {
+    if (vertical && targetCell.y > y) {
+      nextXY.y++;
+    } else if (vertical && targetCell.y < y) {
+      nextXY.y--;
+    } else if (targetCell.x > x) {
       nextXY.x++;
     } else if (targetCell.x < x) {
       nextXY.x--;
@@ -59,12 +65,24 @@ export default function operatorGoToSkull(cell, map) {
   function findNextXY(x, y) {
     const skullCells = findSkullCells();
     let targetCell = selectTargetCell(skullCells);
-    let nextXY = getNextXY(x, y, targetCell);
+    const vertical = getRandomInt(0, 1) === 1;
+    let nextXY = getNextXY(x, y, targetCell, vertical);
+    if (nextXY.x === cell.x && nextXY.y === cell.y) {
+      return nextXY;
+    }
+
+    if (!validateXY(nextXY.x, nextXY.y)) {
+      nextXY = getNextXY(x, y, targetCell, !vertical);
+    }
 
     if (!validateXY(nextXY.x, nextXY.y)) {
       const allowGoCells = findAllowGoCells();
       targetCell = selectTargetCell(allowGoCells);
-      nextXY = getNextXY(x, y, targetCell);
+      nextXY = getNextXY(x, y, targetCell, vertical);
+    }
+
+    if (!validateXY(nextXY.x, nextXY.y)) {
+      nextXY = getNextXY(x, y, targetCell, !vertical);
     }
 
     return nextXY;

@@ -49,7 +49,18 @@ export default function worldReducer(state = initialState, action) {
     };
 
   case EVENT_SUCCESS:
-    return { ...state, isFetching: false, event: action.payload };
+    if (action.payload.time) {
+      return {
+        ...state,
+        isFetching: false,
+        map: {
+          ...state.map,
+          time: action.payload.time,
+        },
+      };
+    } else {
+      return { ...state, isFetching: false };
+    }
 
   case CREATE_WORLD_FAIL:
     return { ...state, isFetching: false, error: action.payload.message };

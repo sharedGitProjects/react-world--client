@@ -20,10 +20,14 @@ export default class World extends React.PureComponent {
       const cells = World.getCells(map);
 
       return (
-        <div className="map">
-          {cells.map(cell => {
-            return <Cell key={cell.id} {...cell} />;
-          })}
+        <div className="worldMap">
+          <div className={map.time}>
+            <div className="map">
+              {cells.map(cell => {
+                return <Cell key={cell.id} {...cell} />;
+              })}
+            </div>
+          </div>
         </div>
       );
     }

@@ -3,3 +3,6 @@
   grid-row: 1;
   background-color: rgb(52, 208, 247);
 }
+.night .river {
+  background-color: rgba(52, 208, 247, 0.8);
+}

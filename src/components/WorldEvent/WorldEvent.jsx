@@ -3,41 +3,46 @@ import PropTypes from "prop-types";
 import Command from "../command/Command";
 
 export default class WorldEvent extends React.PureComponent {
-  renderTemplate = () => {
-    const { event, error } = this.props.event;
+  constructor(props) {
+    super(props);
+    this.state = { temperature: "", time: "", ...props.event };
+  }
 
-    if (error) {
-      return <p>Ошибка выполнения запроса</p>;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.event && nextProps.event.event) {
+      return { ...prevState, ...nextProps.event.event };
+    } else {
+      return prevState;
+    }
+  }
+
+  componentDidMount() {
+    this.props.getTimeOfday();
+    this.timeOfDayTick = setInterval(this.props.getTimeOfday, 30000);
+
+    this.props.getTemperature();
+    this.temperatureTick = setInterval(this.props.getTemperature, 10000);
+  }
+
+  componentWillUnmount() {
+    if (this.timeOfDayTick) {
+      clearInterval(this.timeOfDayTick);
+      this.timeOfDayTick = null;
     }
 
-    if (event) {
-      if (event.temperature) {
-        return (
-          <div>
-            <span>temperature:</span>
-            <span>{event.temperature}</span>
-          </div>
-        );
-      }
-      if (event.time) {
-        return (
-          <div>
-            <span>time:</span>
-            <span>{event.time}</span>
-          </div>
-        );
-      }
+    if (this.temperatureTick) {
+      clearInterval(this.temperatureTick);
+      this.temperatureTick = null;
     }
-
-    return "";
   }
 
   render() {
     return (
       <div>
         <Command operation={this.props.getTemperature} title="Температура" />
+        <span>{this.state.temperature}</span>
         <Command operation={this.props.getTimeOfday} title="Время суток" />
-        <div>{this.renderTemplate()}</div>
+        <span>{this.state.time}</span>
       </div>
     );
   }

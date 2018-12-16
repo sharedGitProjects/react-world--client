@@ -4,9 +4,11 @@ import buildCellGrandpaData from "./buildCellGrandpaData";
 import buildCellKolobokData from "./buildCellKolobokData";
 import buildCellRaftData from "./buildCellRaftData";
 import buildCellRiverData from "./buildCellRiverData";
+import { WORLD_TIME_DAY } from "../../consts/const";
 
 export default function buildWorldData() {
   const map = {
+    time: WORLD_TIME_DAY,
     size: {
       maxX: 10,
       maxY: 10,

@@ -3,6 +3,7 @@ import operatorDeathByGrandpa from "./operatorDeathByGrandpa";
 import operatorGo from "./operatorGo";
 import operatorGoToSkull from "./operatorGoToSkull";
 import operatorReanimateByGrandma from "./operatorReanimateByGrandma";
+import operatorSelectGoOrGoToSkull from "./operatorSelectGoOrGoToSkull";
 
 const operatorStore = {
   operatorDeathByFox: operatorDeathByFox,
@@ -10,6 +11,7 @@ const operatorStore = {
   operatorGo: operatorGo,
   operatorGoToSkull: operatorGoToSkull,
   operatorReanimateByGrandma: operatorReanimateByGrandma,
+  operatorSelectGoOrGoToSkull: operatorSelectGoOrGoToSkull,
 };
 
 export default function getOperator(operatorName) {
