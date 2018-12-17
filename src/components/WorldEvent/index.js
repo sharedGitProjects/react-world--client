@@ -3,7 +3,7 @@ import WorldEvent from "./WorldEvent";
 import getTemperature from "../../actions/getTemperature";
 import getTimeOfday from "../../actions/getTimeOfday";
 
-const mapStateToProps = store => ({
+export const mapStateToProps = store => ({
   event: store.event,
 });
 

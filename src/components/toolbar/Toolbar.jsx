@@ -46,7 +46,7 @@ export default class Toolbar extends React.PureComponent {
       <div className="toolbar">
         <Command operation={this.onSaveWorldClick} title="Сохранить мир" />
         <Command operation={this.onUpdateWorldClick} title="Обновить мир" />
-        <Command operation={this.onStopUpdateClick} title="Остановить обновление" />
+        <Command operation={this.onStopUpdateClick} title="Остановить таймер" />
       </div>
     );
   }
