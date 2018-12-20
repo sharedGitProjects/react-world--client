@@ -6,6 +6,7 @@
   display: grid;
   grid-template-columns: repeat(10, 10%);
   grid-template-rows: repeat(10, 10%);
+  transition: background-color 2s;
 }
 .worldMap {
   width: 600px;

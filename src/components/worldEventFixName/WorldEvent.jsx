@@ -11,8 +11,6 @@ export default class WorldEvent extends React.PureComponent {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.event && nextProps.event.event) {
       return { ...prevState, ...nextProps.event.event };
-    } else {
-      return prevState;
     }
   }
 
@@ -53,5 +51,5 @@ WorldEvent.propTypes = {
   error: PropTypes.string,
   isFetching: PropTypes.bool,
   getTemperature: PropTypes.func.isRequired,
-  getTimeOfday: PropTypes.func.isRequired,
+  getTimeOfday: PropTypes.func.isRequired
 };
