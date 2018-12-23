@@ -10,7 +10,7 @@ export default class Toolbar extends React.PureComponent {
       const events = [];
       this.props.createWorld(name, map, events);
     }
-  }
+  };
 
   onUpdateWorldClick = () => {
     const { map, name } = this.props.world;
@@ -19,14 +19,14 @@ export default class Toolbar extends React.PureComponent {
       const events = [];
       this.props.updateWorld({ ...this.props, map, events });
     }
-  }
+  };
 
   onStopUpdateClick = () => {
     if (this.worldTick) {
       clearInterval(this.worldTick);
       this.worldTick = null;
     }
-  }
+  };
 
   componentDidMount() {
     this.worldTick = setInterval(() => {
@@ -42,13 +42,20 @@ export default class Toolbar extends React.PureComponent {
   }
 
   render() {
-    return (
-      <div className="toolbar">
-        <Command operation={this.onSaveWorldClick} title="Сохранить мир" />
-        <Command operation={this.onUpdateWorldClick} title="Обновить мир" />
-        <Command operation={this.onStopUpdateClick} title="Остановить таймер" />
-      </div>
-    );
+    if (this.props.world.name) {
+      return (
+        <span className="toolbar">
+          <Command operation={this.onSaveWorldClick} title="Сохранить мир" />
+          <Command operation={this.onUpdateWorldClick} title="Обновить мир" />
+          <Command
+            operation={this.onStopUpdateClick}
+            title="Остановить таймер"
+          />
+        </span>
+      );
+    } else {
+      return <span className="toolbar" />;
+    }
   }
 }
 
@@ -57,5 +64,5 @@ Toolbar.propTypes = {
   error: PropTypes.string,
   isFetching: PropTypes.bool,
   createWorld: PropTypes.func.isRequired,
-  updateWorld: PropTypes.func.isRequired,
+  updateWorld: PropTypes.func.isRequired
 };

@@ -1,9 +1,11 @@
 ﻿.command {
-  color: rgb(20, 100, 180);
+  color: slategray;
   cursor: pointer;
-  padding: 10px;
-  display: inline-block;
+  padding: 10px 20px;
+  display: block;
+  white-space: nowrap;
 }
 .command:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  background-color: rgb(229, 235, 243);
 }

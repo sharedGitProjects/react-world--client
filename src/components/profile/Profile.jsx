@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import buildWorldData from "../../utils/builders/buildWorldData";
 import Command from "../command/Command";
+import "./style.css";
 
 export default class Profile extends React.PureComponent {
   constructor(props) {
@@ -11,18 +12,18 @@ export default class Profile extends React.PureComponent {
 
   onGetWorldClick = () => {
     this.props.getWorld(this.state.worldName);
-  }
+  };
 
   onCreateWorldClick = () => {
     const map = buildWorldData();
     const events = [];
     this.props.createWorld(this.state.worldName, map, events, true);
-  }
+  };
 
   handleChange = event => {
     const { value } = event.currentTarget;
     this.setState({ worldName: value });
-  }
+  };
 
   renderTemplate = () => {
     const { error, isFetching } = this.props.world;
@@ -36,12 +37,16 @@ export default class Profile extends React.PureComponent {
     }
 
     return <Command operation={this.onCreateWorldClick} title="Создать мир" />;
-  }
+  };
 
   render() {
     return (
-      <div>
-        <input type="text" onChange={this.handleChange} value={this.state.worldName} />
+      <div className="profilePanel">
+        <input
+          type="text"
+          onChange={this.handleChange}
+          value={this.state.worldName}
+        />
         {this.renderTemplate()}
         <Command operation={this.onGetWorldClick} title="Загрузить мир" />
       </div>
@@ -54,5 +59,5 @@ Profile.propTypes = {
   error: PropTypes.string,
   isFetching: PropTypes.bool,
   getWorld: PropTypes.func.isRequired,
-  createWorld: PropTypes.func.isRequired,
+  createWorld: PropTypes.func.isRequired
 };

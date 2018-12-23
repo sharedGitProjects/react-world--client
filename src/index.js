@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import MainMenu from "./components/mainMenu";
-import App from "./components/App";
+import App from "./components/app/App";
 import Profile from "./components/profile";
 
 /* eslint-disable react/jsx-filename-extension */

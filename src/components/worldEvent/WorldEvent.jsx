@@ -12,6 +12,8 @@ export default class WorldEvent extends React.PureComponent {
     if (nextProps.event && nextProps.event.event) {
       return { ...prevState, ...nextProps.event.event };
     }
+
+    return null;
   }
 
   componentDidMount() {
@@ -19,7 +21,7 @@ export default class WorldEvent extends React.PureComponent {
     this.timeOfDayTick = setInterval(this.props.getTimeOfday, 30000);
 
     this.props.getTemperature();
-    this.temperatureTick = setInterval(this.props.getTemperature, 10000);
+    this.temperatureTick = setInterval(this.props.getTemperature, 5000);
   }
 
   componentWillUnmount() {
@@ -36,12 +38,18 @@ export default class WorldEvent extends React.PureComponent {
 
   render() {
     return (
-      <div>
-        <Command operation={this.props.getTemperature} title="Температура" />
-        <span>{this.state.temperature}</span>
-        <Command operation={this.props.getTimeOfday} title="Время суток" />
-        <span>{this.state.time}</span>
-      </div>
+      <span>
+        <Command
+          operation={this.props.getTemperature}
+          title={`Температура (${this.state.temperature})`}
+        />
+        <Command
+          operation={this.props.getTimeOfday}
+          title={`Время суток (${
+            this.state.time === "night" ? "ночь" : "день"
+          })`}
+        />
+      </span>
     );
   }
 }

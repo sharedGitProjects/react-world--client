@@ -1,5 +1,25 @@
-.mainMenu ul li{
-    padding: 5px;
-    margin: 0px;
-    display: inline-block;
+body {
+  margin: 0;
+}
+.mainMenu {
+  background-color: slategray;
+  padding: 0px;
+  width: 100%;
+}
+.mainMenu ul {
+  margin: 0;
+  padding: 0;
+}
+.mainMenu ul li {
+  margin: 0;
+  display: inline-block;
+}
+.mainMenu a {
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+}
+.mainMenu a:hover {
+  background-color: rgb(133, 153, 173, 0.8);
 }

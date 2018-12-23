@@ -1,0 +1,8 @@
+﻿.profilePanel {
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px 0px 0px 20px;
+}
+.profilePanel input[type="text"] {
+  padding: 4px;
+}
